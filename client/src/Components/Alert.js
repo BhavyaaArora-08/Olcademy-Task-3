@@ -10,17 +10,16 @@ const styles = {
 };
 
 const Alerte = (props) => {
+  console.log("hey", props);
+
   return (
-    <div className="alerts">
-      {props.alerts &&
-        props.alerts.map((alert) => (
-          <Alert
-            className={props.classes.root}
-            severity={alert.type ? alert.type : "error"}
-          >
-            {alert.text}
-          </Alert>
-        ))}
+    <div className="alert">
+      <Alert
+        className={props.classes.root}
+        severity={props.alert.type ? props.alert.type : "error"}
+      >
+        {props.alert.text}
+      </Alert>
     </div>
   );
 };

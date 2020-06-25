@@ -1,27 +1,41 @@
 import React from "react";
 import QuizCard from "./QuizCard";
-import Alert from "../Components/Alert";
 
-const Quiz = () => {
+const Quiz = (props) => {
+  const { questions } = props;
+  const onSubmit = (e) => {
+    e.preventDefault();
+    props.handleChange({ showResult: true });
+    return false;
+  };
+
   return (
     <div className="containere">
       <h1 style={{ textAlign: "center", color: "white" }}>Take the Quiz!</h1>
+      {questions.length === 0 && (
+        <div className="form login">
+          <h1 style={{ textAlign: "center", marginTop: "65px" }}>Loading...</h1>
+        </div>
+      )}
       <div>
-        <QuizCard
-          question="heyeyeye"
-          option1="hey"
-          option2="hey"
-          option3="hey"
-          option4="hey"
-        />
-        <Alert />
-        <QuizCard question="heyeyeye" />
-        <QuizCard question="heyeyeye" />
-        <QuizCard question="heyeyeye" />
-        <QuizCard question="heyeyeye" />
+        {questions.map((question) => (
+          <QuizCard
+            key={question.qno}
+            qno={question.qno}
+            question={question.question}
+            option1={question.option1}
+            option2={question.option2}
+            option3={question.option3}
+            option4={question.option4}
+            answer={question.answer}
+            showResult={props.showResult}
+          />
+        ))}
       </div>
-
-      <form style={{ textAlign: "center", padding: "20px" }}>
+      <form
+        onSubmit={onSubmit}
+        style={{ textAlign: "center", padding: "20px" }}
+      >
         <button
           style={{ margin: "0 10px" }}
           type="submit"

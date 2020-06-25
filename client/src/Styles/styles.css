@@ -37,7 +37,8 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
   padding: 20px 30px;
-  width: 400px;
+  width: 450px;
+  min-height: 250px;
   padding-bottom: 20px;
   min-width: 300px;
 }
@@ -151,4 +152,12 @@ hr {
 textarea {
   display: inline-block;
   width: 100%;
+}
+
+.quizOption {
+  margin: 5px 10px 5px 0px;
+}
+
+label {
+  width: 90%;
 }
